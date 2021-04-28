@@ -1,0 +1,4 @@
+git push heroku master
+heroku config:set BOT_NAME=TestFirstPrifizBot
+heroku config:set BOT_TOKEN=<token>
+heroku ps:scale worker=1
