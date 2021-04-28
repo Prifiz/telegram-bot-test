@@ -1,1 +1,1 @@
-worker: java $JAVA_OPTS -cp ./target/classes:./target/dependency/ com.mybotfarm.App
+worker: java $JAVA_OPTS -cp target/classes:target/dependency/* com.mybotfarm.App
