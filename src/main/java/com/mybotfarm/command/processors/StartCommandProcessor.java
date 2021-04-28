@@ -1,5 +1,9 @@
 package com.mybotfarm.command.processors;
 
+/**
+ * Класс для обработки команды /start
+ * Это первая вызываемая команда в тот момент, когда вы впервые начинаете общаться с ботом
+ */
 public class StartCommandProcessor extends AbstractCommandProcessor {
     @Override
     public String process() {

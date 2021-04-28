@@ -2,15 +2,16 @@ package com.mybotfarm.command;
 
 import org.glassfish.grizzly.utils.Pair;
 
+/**
+ * Класс для разбора введенной пользователем команды
+  */
 public class CommandParser {
 
     private static final String COMMAND_PREFIX = "/";
     private static final String COMMAND_TEXT_DELIMETER = " ";
 
     public ParsedCommand getParsedCommand(String text) {
-
         ParsedCommand result = new ParsedCommand();
-
         String trimmedText = text.strip();
 
         if (!isCommand(trimmedText)) {
@@ -35,23 +36,19 @@ public class CommandParser {
         try {
             command = Command.valueOf(upperCaseText);
         } catch (IllegalArgumentException e) {
-            // something went wrong
+            // что-то пошло не так...
         }
         return command;
     }
 
     private boolean isCommand(String command) {
-        return command.startsWith(COMMAND_PREFIX);
-    }
-
-    private boolean isCommandForMe(String command) {
-        return true;
+        // TODO
+        //  нужно реализовать этот метод
     }
 
     private Pair<String, String> getCommandAndText(String commandString) {
         Pair<String, String> result = new Pair<>();
-
-        if (commandString.contains(" ")) {
+        if (commandString.contains(COMMAND_TEXT_DELIMETER)) {
             result.setFirst(commandString.substring(0, commandString.indexOf(COMMAND_TEXT_DELIMETER)));
             result.setSecond(commandString.substring(commandString.indexOf(COMMAND_TEXT_DELIMETER) + 1));
             return result;

@@ -1,5 +1,8 @@
 package com.mybotfarm.command.processors;
 
+/**
+ * Класс для обработки команды /help
+ */
 public class HelpCommandProcessor extends AbstractCommandProcessor {
     @Override
     public String process() {

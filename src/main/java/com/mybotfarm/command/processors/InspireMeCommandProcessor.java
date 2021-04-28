@@ -16,6 +16,8 @@ public class InspireMeCommandProcessor extends AbstractCommandProcessor {
 
     private final String parameter;
 
+    // FIXME
+    //  Что произойдет, если, к примеру, мы решим выводить цитату человека с введенным именем?
     @Override
     public String process() {
         try {
@@ -24,14 +26,14 @@ public class InspireMeCommandProcessor extends AbstractCommandProcessor {
             Random random = new Random();
             return quotes.get(random.nextInt(quotes.size()));
         } catch (IllegalArgumentException ex) {
-            return "Incorrect argument";
-        } catch (IOException ex) {
-            return "Something went wrong: " + ex.getMessage();
-        } catch (URISyntaxException e) {
-            return "File not found";
+            return ex.getMessage();
+        } catch (IOException | URISyntaxException ex) {
+            return "Can't find quotes";
         }
     }
 
+    // FIXME
+    //  Что можно здесь изменить?
     private String pickUpFileName(String parameter) {
         if (parameter.isBlank()) {
             return "quotes_en.txt";
@@ -45,10 +47,11 @@ public class InspireMeCommandProcessor extends AbstractCommandProcessor {
         if ("es".equalsIgnoreCase(parameter)) {
             return "quotes_es.txt";
         }
-
         throw new IllegalArgumentException("No such argument");
     }
 
+    // FIXME
+    //  Всё ли хорошо с этим методом?
     private List<String> readQuotes(String filename) throws IOException, URISyntaxException {
         Path quotesPath = Paths.get(ClassLoader.getSystemResource(filename).toURI());
         return Files.lines(quotesPath).
