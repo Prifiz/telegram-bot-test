@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp build/staging:build/staging/* com.mybotfarm.App
+web: java $JAVA_OPTS -cp ./target/classes:./target/dependency/ com.mybotfarm.App
